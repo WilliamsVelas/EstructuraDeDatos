@@ -1,0 +1,269 @@
+package examen1estructuradedatos;
+
+import java.util.Scanner;
+/**
+ * @author WilliamsVelasquez
+ */
+public class Examen1EstructuraDeDatos {
+    
+    public static void main(String[] args) {
+         Scanner entrada= new Scanner(System.in);
+         
+         int opcion = 0;
+       
+         do{
+         System.out.println("     ");
+         System.out.println("//Bienvenido//");
+         System.out.println("              ");
+         System.out.println("//Disponemos de 4 ejercicios diferentes//");
+         System.out.println("              ");
+         System.out.println("//1-Ejercicio//");
+         System.out.println("//2-Ejercicio//");
+         System.out.println("//3-Ejercicio//");
+         System.out.println("//4-Ejercicio//");
+         System.out.println("//5-Salir//");
+         System.out.println("               ");
+         System.out.println("//Por favor ingrese una opcion: ");
+          
+         opcion = entrada.nextInt();
+         
+          switch(opcion) {
+             case 1:
+                 ejercicio1();
+                 break;
+             case 2:
+                 ejercicio2();
+                 break;
+             case 3:
+                 ejercicio3();
+                 break;
+             case 4:
+                 ejercicio4();
+                 break;
+             case 5:
+                 break;
+          
+          }
+         }while(opcion!=5);
+         
+         System.out.println("//El programa ha finalizado//");
+         
+    }
+    
+    static void ejercicio1 (){
+         //Crear una función que permita sumar dos matrices y luego su resultado multiplicarlo por
+         //una tercera e imprimir la matriz resultante por la consola, quedando la operación de este
+         //modo: M_RESULTADO = (M_1 + M_2) * M_3. Deben tomar en cuenta las reglas tanto de
+         //la suma como de la multiplicación de matrices.
+       int matriz1 [][] = new int [4][4];
+       int matriz2 [][] = new int [4][4];
+       int matriz3 [][] = new int [4][4];
+       int suma [][] = new int [4][4];
+       int multi [][] = new int [4][4];
+       
+       //Primera matriz
+       for (int i=0;i< matriz1.length;i++){
+           for(int j=0;j<matriz1.length;j++){
+              matriz1[i][j]= (int) (Math.random()* 5);
+              
+           }
+       }
+       //Segunda matriz
+       for (int i=0;i< matriz2.length;i++){
+           for(int j=0;j<matriz2.length;j++){
+              matriz2[i][j]= (int) (Math.random()* 5);
+              
+           }
+       }
+       //Tercera matriz
+       for (int i=0;i< matriz3.length;i++){
+           for(int j=0;j<matriz3.length;j++){
+              matriz3[i][j]= (int) (Math.random()* 5);
+              
+           }
+       }
+       //Suma de matriz1 y matriz2
+       for (int i=0;i< matriz1.length;i++){
+           for(int j=0;j<matriz2.length;j++){
+              suma[i][j]= matriz1[i][j]+matriz2[i][j];
+              
+           }
+       }
+       //Multiplicacion de la suma y de la matriz3
+        for (int i = 0; i < suma.length; i++) {
+            for (int j = 0; j < suma.length; j++) {
+                for (int k = 0; k < suma.length; k++) {
+                    multi[i][j]= multi[i][j] + suma[i][k] * matriz3[k][j];
+                    
+                }
+                
+            }
+        }
+        //Imprimiendo matriz1
+        for(int i=0;i<matriz1.length;i++){
+           for(int j=0;j<matriz1.length;j++){
+               System.out.print("["+matriz1[i][j]+"]");
+           }
+            
+            if (i==1) {
+               System.out.print("   +   ");  
+            } else {
+                 System.out.print("       ");
+            }  
+            //Imprimiendo matriz2
+            for (int j = 0; j < matriz2.length; j++) {
+                System.out.print("["+matriz2[i][j]+"]");
+            }
+             if (i==1) {
+               System.out.print("   =   ");  
+            } else {
+                 System.out.print("       ");
+            } 
+            //Imprimiendo el resultado de la suma de la matriz1 y matriz2
+            for (int j = 0; j < suma.length; j++) {
+                System.out.print("["+suma[i][j]+"]");
+             }
+             if (i==1) {
+               System.out.print("   *   ");  
+            } else {
+                 System.out.print("       ");
+            }  
+            ///Imprimiendo matri3
+             for (int j = 0; j < matriz3.length; j++) {
+                System.out.print("["+matriz3[i][j]+"]");
+            }
+              if (i==1) {
+               System.out.print("   =   ");  
+            } else {
+                 System.out.print("       ");
+            } 
+             //Imprimiendo el resultado de la multiplicacion de la suma y la matriz 3
+            for (int j = 0; j < multi.length; j++) {
+                System.out.print("["+multi[i][j]+"]");
+             }
+             System.out.println("");
+    }
+  
+    }
+    
+    static void ejercicio2(){
+        //Crear una función que rellene todos los datos de una matriz bajo la siguiente
+        //función:Matriz[X][Y] 23X 4+20Y 3-3, donde la X y la Y representa la coordenada en la
+        //matriz de cada espacio que sea llenado, las dimensiones de la matriz deberán ser
+        //ingresadas por el usuario, y cuando el mismo las indique la matriz resultante deberá ser
+        //impresa. 
+        
+        Scanner entrada= new Scanner(System.in);
+         
+         int matriz[][],x,y;
+        
+        //Entrada de filas y columnas
+         System.out.println("Numero de filas de la matriz: ");
+         x = entrada.nextInt();
+         
+         System.out.println("Numero de columnas de la matriz: ");
+         y = entrada.nextInt();
+        
+        matriz = new int [x][y];
+        
+        //Entrada de numeros de la matriz
+         System.out.println("Coloque los datos de la matriz: ");
+        for(int i=0;i<x;i++){
+          for(int j=0;j<y;j++){
+              System.out.print("Matriz ["+i+"]["+j+"]:");
+              matriz[i][j] = entrada.nextInt();
+         }    
+         }
+        //Impresion de la matriz que dio el usuario
+         System.out.println("\nLa matriz es: ");
+        for(int i=0;i<x;i++){
+           for(int j=0;j<y;j++){
+               System.out.print("["+matriz[i][j]+"]");
+           }
+            System.out.println("");
+        }
+        for (int i = 0; i < x; i++){
+            for (int j = 0; j < y; j++){
+                matriz[i][j] = (int) (23 * Math.pow(i, 4) + 20 * Math.pow(j, 3) - 3);
+            }
+        }
+        System.out.println("    ");
+        System.out.println("Función: 23*X^4+20*Y^3-3");
+        System.out.println("    ");
+        System.out.println("Resultados: ");
+        //Impresion del resultado de la funcion
+        for (int i = 0; i < matriz.length; i++){
+            for (int j = 0; j < matriz.length; j++){
+                System.out.println("X: " + i + " Y: " + j);
+                System.out.println(23 * Math.pow(i, 4) + 20 * Math.pow(j, 3) - 3);
+            }
+        }
+     }
+    
+    static void ejercicio3(){
+      //Crear una función que permita validar si una matriz es Identidad, tomando encuenta los
+      //requisitos necesarios para que la misma cumpla con esta característica, debe imprimir en
+      //pantalla el resultado de la validación de dicha matriz.
+        
+        Scanner entrada= new Scanner(System.in);
+        
+        int matriz [][] = new int [4][4];
+        
+        //Entrada de los valores de la matriz
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz.length; j++) {
+                System.out.println("Coloque los valores de la matriz: ");
+                matriz[i][j] = entrada.nextInt();
+            }
+        }
+             //Matriz identidad
+               if (matriz[0][0] == 1 && matriz[0][1] == 0 && matriz[0][2] == 0 && matriz[0][3] == 0
+                && matriz[1][0] == 0 && matriz[1][1] == 1 && matriz[1][2] == 0 && matriz[1][3] == 0
+                && matriz[2][0] == 0 && matriz[2][1] == 0 && matriz[2][2] == 1 && matriz[2][3] == 0
+                && matriz[3][0] == 0 && matriz[3][1] == 0 && matriz[3][2] == 0 && matriz[3][3] == 1){
+               //Mensajes
+               System.out.println("\nEs una matriz identidad: ");
+        }      else {
+               System.out.println("\nNo es una matriz identidad: ");
+        }
+               //Impresion de la matriz dada por el usuario
+               for (int i = 0; i < matriz.length; i++){
+                   for(int j = 0; j < matriz.length; j++){
+                    System.out.print("["+matriz[i][j]+"]");
+                   }
+                   System.out.println("  ");
+      }
+    }
+    
+    static void ejercicio4(){
+      //Crear una función que determine si una matriz es Triangular Superior, tomando en cuenta
+      //todas las validaciones necesarias al momento de realizar dicha operación.
+        
+        Scanner entrada= new Scanner(System.in);
+        
+        int matriz [][] = new int [3][3];
+        
+        //Entrada de los valores de la matriz
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz.length; j++) {
+                System.out.println("Coloque los valores de la matriz: ");
+                matriz[i][j] = entrada.nextInt();
+            }
+        }
+             //Matriz triangular superior
+               if ( matriz[1][0] == 0 && matriz[2][0] == 0 && matriz[2][1] == 0 ) 
+                 {
+               //Mensajes
+               System.out.println("\nEs una matriz triangular superior: ");
+        }      else {
+               System.out.println("\nNo es una matriz triangular superior: ");
+        }
+               //Impresion de la matriz dada por el usuario
+               for (int i = 0; i < matriz.length; i++){
+                   for(int j = 0; j < matriz.length; j++){
+                    System.out.print("["+matriz[i][j]+"]");
+                   }
+                   System.out.println("  ");
+      }
+    }
+}
